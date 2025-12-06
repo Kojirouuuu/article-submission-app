@@ -12,6 +12,8 @@ export default async function PostPage({ params }: PageProps){
 
     const post = await getPost(id);
 
+    // HTML formでは送信ボタンが押されると入力欄(input)に入っている文字だけを関数に送信する
+    // bindを使ってあらかじめ引数をセットしておくことで、deletePost関数にidを渡せるようにする
     const deleteAction = deletePost.bind(null, id);
 
     if (!post) {
