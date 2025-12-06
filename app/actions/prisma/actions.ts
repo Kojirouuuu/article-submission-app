@@ -24,3 +24,13 @@ export async function createPost(formData: FormData) {
 
     redirect("/");
 }
+
+export async function deletePost(id: string) {
+    await prisma.post.delete({
+        where: { id },
+    })
+
+    revalidatePath("/");
+
+    redirect("/");
+}
