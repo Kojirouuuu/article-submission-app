@@ -1,4 +1,5 @@
 import { getPost } from "@/app/actions/prisma/queries";
+import { deletePost } from "@/app/actions/prisma/actions";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
@@ -11,6 +12,8 @@ export default async function PostPage({ params }: PageProps){
 
     const post = await getPost(id);
 
+    const deleteAction = deletePost.bind(null, id);
+
     if (!post) {
         notFound();
     }
@@ -19,11 +22,20 @@ export default async function PostPage({ params }: PageProps){
         <main>
             <div>
                 <div>
-                    <Link
-                    href="/"
-                    >
-                        ← Back to home
-                    </Link>
+                    <div>
+                        <Link
+                        href="/"
+                        >
+                            ← Back to home
+                        </Link>
+                        <form action={deleteAction}>
+                            <button
+                            type="submit"
+                            >
+                                Delete Post
+                            </button>
+                        </form>
+                    </div>
 
                     <h1>
                         {post.title}
