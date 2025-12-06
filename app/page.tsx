@@ -7,9 +7,14 @@ export default async function Home() {
   return (
     <main>
       <div>
-        <h1>
+        <div>
+          <h1>
           Zenn Clone
-        </h1>
+          </h1>
+          <Link href="/posts/new">
+          + New Post
+          </Link>
+        </div>
 
         <div>
           {posts.map((post) => (
@@ -24,7 +29,7 @@ export default async function Home() {
                 <p>
                   {new Date(post.createdAt).toLocaleDateString()}
                 </p>
-                <p>
+                <p style={{ whiteSpace: "pre-wrap" }}>
                   {post.content}
                 </p>
               </article>
