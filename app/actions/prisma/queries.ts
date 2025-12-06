@@ -15,3 +15,14 @@ export async function getPosts() {
 
     return posts;
 }
+
+export async function getPost(id: string) {
+    console.log(`Fetching post with ID: ${id} from DB...`);
+    const post = await prisma.post.findUnique({
+        where: {
+            id: id,
+        }
+    })
+
+    return post;
+}
