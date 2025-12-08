@@ -7,6 +7,7 @@ export async function getPosts() {
         return [];
     }
     console.log('Fetching posts from DB...');
+    console.log('process.env.DATABASE_URL =', process.env.DATABASE_URL)
 
     const posts = await prisma.post.findMany({
         where: {
