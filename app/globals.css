@@ -10,6 +10,10 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Brand (orange) */
+  --color-brand: #f97316; /* orange-500 */
+  --color-brand-600: #ea580c; /* hover */
+  --color-brand-700: #c2410c; /* active */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +27,41 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Links */
+a {
+  @apply text-brand hover:text-brand-600 transition-colors;
+}
+
+/* Prose defaults */
+h1 { @apply text-3xl font-semibold tracking-tight; }
+h2 { @apply text-2xl font-semibold tracking-tight; }
+h3 { @apply text-xl font-semibold tracking-tight; }
+p { @apply leading-7; }
+
+/* Utility components */
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+.btn-primary {
+  @apply bg-brand text-white hover:bg-brand-600 active:bg-brand-700 focus:ring-brand;
+}
+.btn-secondary {
+  @apply bg-white text-foreground border border-neutral-200 hover:bg-neutral-50 focus:ring-brand;
+}
+.btn-danger {
+  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-600;
+}
+
+.card {
+  @apply rounded-lg border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow;
+}
+
+.input {
+  @apply w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-neutral-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand;
+}
+
+.label {
+  @apply mb-1 block text-sm font-medium text-neutral-700;
 }

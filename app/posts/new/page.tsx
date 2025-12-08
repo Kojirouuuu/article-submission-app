@@ -18,27 +18,27 @@ export default function NewPostPage() {
         }
     }
     return (
-        <main>
-            <div>
-                <h1>New Post</h1>
+        <div className="mx-auto max-w-2xl">
+            <h1 className="mb-6">New Post</h1>
 
-                <form action={createPost}>
-                    <div>
-                        <label htmlFor="title">Title</label>
-                        <input
+            <form action={createPost} className="space-y-5">
+                <div>
+                    <label htmlFor="title" className="label">Title</label>
+                    <input
                         type="text"
                         id="title"
                         name="title" // FromDataで取得するための名前
                         required
                         placeholder="Enter post title"
-                        />
-                    </div>
+                        className="input"
+                    />
+                </div>
 
-                    <div>
-                        <label htmlFor="content">
-                            Content (Markdown supported)
-                        </label>
-                        <textarea
+                <div>
+                    <label htmlFor="content" className="label">
+                        Content (Markdown supported)
+                    </label>
+                    <textarea
                         id="content"
                         name="content" // FromDataで取得するための名前
                         required
@@ -46,22 +46,20 @@ export default function NewPostPage() {
                         rows={1}
                         ref={textareaRef}
                         onChange={onChangeContent}
+                        className="input min-h-40"
                         style={{
                             overflow: "hidden",
                             whiteSpace: "pre-wrap",
                             height: contentHeight
                         }}
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <div>
-                        <Link href="/">
-                        Cansell
-                        </Link>
-                        <button type="submit">Publish!</button>
-                    </div>
-                </form>
-            </div>
-        </main>
+                <div className="flex items-center justify-end gap-3">
+                    <Link href="/" className="btn btn-secondary">Cancel</Link>
+                    <button type="submit" className="btn btn-primary">Publish</button>
+                </div>
+            </form>
+        </div>
     )
 }

@@ -21,43 +21,26 @@ export default async function PostPage({ params }: PageProps){
     }
 
     return (
-        <main>
-            <div>
-                <div>
-                    <div>
-                        <Link
-                        href="/"
-                        >
-                            ← Back to home
-                        </Link>
-                        <form action={deleteAction}>
-                            <button
-                            type="submit"
-                            >
-                                Delete Post
-                            </button>
-                        </form>
-                    </div>
-
-                    <h1>
-                        {post.title}
-                    </h1>
-
-                    <div>
-                        <span>
-                            {new Date(post.createdAt).toLocaleDateString()}
-                        </span>
-                        {!post.published && (
-                            <span>
-                                下書き
-                            </span>
-                        )}
-                    </div>
-                </div>
-                <div className="whitespace-pre-wrap">
-                    {post.content}
-                </div>
+        <div className="mx-auto max-w-3xl">
+            <div className="mb-6 flex items-center justify-between">
+                <Link href="/" className="text-sm text-neutral-600 hover:text-brand">← Back to home</Link>
+                <form action={deleteAction}>
+                    <button type="submit" className="btn btn-danger">Delete Post</button>
+                </form>
             </div>
-        </main>
+
+            <h1 className="mb-2">{post.title}</h1>
+
+            <div className="mb-6 flex items-center gap-3 text-xs text-neutral-500">
+                <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+                {!post.published && (
+                    <span className="rounded bg-neutral-100 px-2 py-0.5 text-[11px] text-neutral-700">下書き</span>
+                )}
+            </div>
+
+            <article className="prose whitespace-pre-wrap">
+                {post.content}
+            </article>
+        </div>
     )
 }
